@@ -12,3 +12,6 @@ python-decouple
 requests
 speedtest-cli
 pymongo
+Flask==2.0.3
+gunicorn==20.1.0
+aiohttp
