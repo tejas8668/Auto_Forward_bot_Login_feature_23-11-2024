@@ -1,5 +1,6 @@
-from os import environ 
+from os import environ
 from pyrogram import Client
+from pyrogram.storage import MemoryStorage  # Import MemoryStorage
 
 class Config:
     API_ID = environ.get("API_ID", "")
@@ -16,4 +17,20 @@ class temp(object):
     forwardings = 0
     BANNED_USERS = []
     IS_FRWD_CHAT = []
-    
+
+# Initialize the bot client using MemoryStorage
+app = Client(
+    "bot_session",
+    session_string=Config.BOT_SESSION,
+    api_id=Config.API_ID,
+    api_hash=Config.API_HASH,
+    bot_token=Config.BOT_TOKEN,
+    storage=MemoryStorage()  # Use MemoryStorage for in-memory session
+)
+
+@app.on_message()
+def my_handler(client, message):
+    message.reply_text("Hello, I received your message!")
+
+if __name__ == "__main__":
+    app.run()
