@@ -25,7 +25,7 @@ app = Client(
     api_id=Config.API_ID,
     api_hash=Config.API_HASH,
     bot_token=Config.BOT_TOKEN,
-    storage=MemoryStorage()  # Use MemoryStorage for in-memory session
+    storage=MemoryStorage("bot_session_storage")  # Provide a name for the storage
 )
 
 @app.on_message()
