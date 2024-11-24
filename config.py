@@ -1,4 +1,5 @@
 from os import environ 
+from pyrogram import Client
 
 class Config:
     API_ID = environ.get("API_ID", "")
